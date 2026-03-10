@@ -183,11 +183,6 @@ const TICKER_DATA = [
   { symbol: "GOLD", value: "₹71,450", change: "+0.63%", up: true },
   { symbol: "USD/INR", value: "83.42", change: "-0.12%", up: false },
   { symbol: "CRUDE OIL", value: "$78.34", change: "+1.05%", up: true },
-  { symbol: "RELIANCE", value: "₹2,934.50", change: "+1.78%", up: true },
-  { symbol: "TCS", value: "₹3,812.25", change: "+0.94%", up: true },
-  { symbol: "HDFCBANK", value: "₹1,678.90", change: "-0.22%", up: false },
-  { symbol: "INFY", value: "₹1,543.60", change: "+2.31%", up: true },
-  { symbol: "WIPRO", value: "₹512.45", change: "+1.67%", up: true },
 ];
 
 const FEATURES = [
