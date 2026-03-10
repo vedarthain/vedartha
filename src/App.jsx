@@ -68,7 +68,7 @@ function genStockPrice(idx) {
   const base=100+seed(idx*31+7)*4900, change=(seed(idx*19+3)-0.47)*8;
   return {price:+base.toFixed(2),change:+change.toFixed(2),volume:Math.round((seed(idx*13+5)*5000000)+100000),mktCap:+(base*(seed(idx*7+2)*5000+500)).toFixed(0)};
 }
-const NSE_STOCKS_WITH_PRICES = NSE_ALL_STOCKS.map(...)  // line 71
+const NSE_STOCKS_WITH_PRICES = NSE_ALL_STOCKS.map((s,i)=>({...s,...genStockPrice(i)}));
 const ALL_SECTORS_NSE = [...]  // line 72
 
 // ─── TOOLTIP ──────────────────────────────────────────────────────────────────
