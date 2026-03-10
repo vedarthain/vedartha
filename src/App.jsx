@@ -247,8 +247,6 @@ function NSEListingsTab() {
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 export default function App() {
   const [showLanding,setShowLanding]=useState(true);
-  if(showLanding) return <LandingPage onEnter={()=>setShowLanding(false)}/>;
-
   const [tab,setTab]=useState("ohlcv"), [range,setRange]=useState(5);
   const [stock,setStock]=useState("RELIANCE"), [activeSectors,setActiveSectors]=useState(["IT","Banking","Auto","Pharma"]);
   const [animKey,setAnimKey]=useState(0);
@@ -280,7 +278,9 @@ export default function App() {
   const thin=(data,max=60)=>{if(data.length<=max)return data;const step=Math.ceil(data.length/max);return data.filter((_,i)=>i%step===0||i===data.length-1);};
   const axTick={fill:"#4caf50",fontSize:9,fontFamily:"Nunito"};
   const grid=<CartesianGrid stroke="#1a3a1a" strokeDasharray="4 4" vertical={false}/>;
-  const TABS=[["ohlcv","📈","OHLCV"],["index","📊","Indices"],["sector","🏭","Sectors"],["fiidii","💰","FII/DII"],["nse","📋","NSE All"]];
+  const TABS=[["ohlcv","\u{1F4C8}","OHLCV"],["index","\u{1F4CA}","Indices"],["sector","\u{1F3ED}","Sectors"],["fiidii","\u{1F4B0}","FII/DII"],["nse","\u{1F4CB}","NSE All"]];
+
+  if(showLanding) return <LandingPage onEnter={()=>setShowLanding(false)}/>;
 
   return (
     <div style={{minHeight:"100vh",background:"#0a0f0a",fontFamily:"'Nunito',sans-serif"}}>
