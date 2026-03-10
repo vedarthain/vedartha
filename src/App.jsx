@@ -399,7 +399,7 @@ export default function App() {
               <span style={{fontSize:9,color:"#ffab00",fontFamily:"'Nunito',sans-serif",fontWeight:700,letterSpacing:".1em"}}>LIVE DATA</span>
             </div>
           ) : (
-            <button onClick={()=>window.location.href=getLoginURL()}
+            <button onClick={()=>window.location.href="/api/login"}
               style={{background:"linear-gradient(135deg,#ff6f00,#ffab00)",border:"none",borderRadius:20,padding:"6px 16px",fontSize:10,fontWeight:700,color:"#0d0800",cursor:"pointer",fontFamily:"'Nunito',sans-serif",letterSpacing:".08em",boxShadow:"0 0 12px rgba(255,111,0,0.3)"}}>
               CONNECT UPSTOX
             </button>
