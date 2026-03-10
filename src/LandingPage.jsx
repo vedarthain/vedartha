@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const INDIAN_TRANSLATIONS = [
-  { text: "वेदार्थ",        lang: "Hindii"     },
+  { text: "वेदार्थ",        lang: "Hindi"     },
   { text: "வேதார்த்தம்",   lang: "Tamil"     },
   { text: "వేదార్థం",      lang: "Telugu"    },
   { text: "ವೇದಾರ್ಥ",      lang: "Kannada"   },
