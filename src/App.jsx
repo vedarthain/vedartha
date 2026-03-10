@@ -250,21 +250,20 @@ function NSEListingsTab() {
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 export default function App() {
+  // ALL hooks must be at the top — before any conditional returns
   const [showLanding,setShowLanding]=useState(true);
-  if(showLanding) return <LandingPage onEnter={()=>setShowLanding(false)}/>;
-
-  const [tab,setTab]=useState("ohlcv"), [range,setRange]=useState(5);
-  const [stock,setStock]=useState("RELIANCE"), [activeSectors,setActiveSectors]=useState(["IT","Banking","Auto","Pharma"]);
+  const [tab,setTab]=useState("ohlcv");
+  const [range,setRange]=useState(5);
+  const [stock,setStock]=useState("RELIANCE");
+  const [activeSectors,setActiveSectors]=useState(["IT","Banking","Auto","Pharma"]);
   const [animKey,setAnimKey]=useState(0);
-
-  // Upstox real data state
   const [upstoxReady,setUpstoxReady]=useState(isLoggedIn());
   const [realOHLCV,setRealOHLCV]=useState(null);
   const [realQuotes,setRealQuotes]=useState(null);
   const [dataLoading,setDataLoading]=useState(false);
   const [dataError,setDataError]=useState(null);
 
-  // Handle OAuth redirect — grab code from URL after Upstox login
+  // Handle OAuth redirect
   useEffect(()=>{
     const params=new URLSearchParams(window.location.search);
     const code=params.get("code");
@@ -289,7 +288,7 @@ export default function App() {
       .catch(e=>{ setDataError(e.message); setDataLoading(false); });
   },[upstoxReady,stock,months]);
 
-  // Fetch real quotes for NSE tab
+  // Fetch real quotes
   useEffect(()=>{
     if(!upstoxReady) return;
     const isins=Object.values(STOCK_ISINS);
@@ -308,6 +307,9 @@ export default function App() {
   const sectorData=useMemo(()=>genSectorPerf(months),[months]);
   const fiiData=useMemo(()=>genFIIDII(months),[months]);
   const setRangeIdx=i=>{setRange(i);setAnimKey(k=>k+1);};
+
+  // Landing page gate — AFTER all hooks
+  if(showLanding) return <LandingPage onEnter={()=>setShowLanding(false)}/>;
 
   const ohlcvStats=useMemo(()=>{
     if(!ohlcvData.length) return {};
